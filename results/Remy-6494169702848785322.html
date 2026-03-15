@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Veteran Career Clarity Assessment — Remy | Reframe & Rise</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  /* ── RESET & BASE ─────────────────────────────────────────────── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg:        #2f3541;
+    --bg2:       #262b37;
+    --bg3:       #1e2229;
+    --surface:   rgba(255,255,255,0.03);
+    --border:    rgba(255,255,255,0.07);
+    --text-hi:   rgba(255,255,255,0.95);
+    --text-mid:  rgba(255,255,255,0.80);
+    --text-lo:   rgba(255,255,255,0.55);
+    --text-dim:  rgba(255,255,255,0.38);
+    --gold:      #be9870;
+    --crimson:   #c4383f;
+    --steel:     #7a9baa;
+    --c1:        #be9870;
+    --c2:        #c4383f;
+    --c3:        #7a9baa;
+    --band-red:  #c45a5a;
+    --band-amber:#C8A96E;
+    --band-green:#7EB8A4;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    background: linear-gradient(160deg, var(--bg) 0%, var(--bg2) 55%, var(--bg3) 100%);
+    min-height: 100vh;
+    color: var(--text-mid);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+  }
+  /* ── TYPOGRAPHY ───────────────────────────────────────────────── */
+  .display { font-family: 'Cormorant Garamond', serif; font-weight: 300; }
+  .display-med { font-family: 'Cormorant Garamond', serif; font-weight: 500; }
+  .eyebrow {
+    font-size: 0.56rem; letter-spacing: 0.32em;
+    text-transform: uppercase; color: var(--text-dim);
+  }
+  p { line-height: 1.85; }
+  /* ── ANIMATIONS ───────────────────────────────────────────────── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes dot {
+    0%,80%,100% { opacity: 0.15; transform: scale(0.8); }
+    40%         { opacity: 1;    transform: scale(1); }
+  }
+  @keyframes pageIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .fade-in { animation: fadeUp 0.55s ease forwards; opacity: 0; }
+  .fade-in-1 { animation-delay: 0.05s; }
+  .fade-in-2 { animation-delay: 0.12s; }
+  .fade-in-3 { animation-delay: 0.19s; }
+  .fade-in-4 { animation-delay: 0.26s; }
+  .fade-in-5 { animation-delay: 0.33s; }
+  /* ── LAYOUT ───────────────────────────────────────────────────── */
+  .page { display: none; animation: pageIn 0.4s ease forwards; }
+  .page.active { display: block !important; }
+  @media (max-width: 768px) {
+    .page { display: none !important; }
+    .page.active { display: block !important; }
+  }
+  .container { max-width: 720px; margin: 0 auto; padding: 0 2rem; }
+  .container-sm { max-width: 680px; margin: 0 auto; padding: 0 2rem; }
+  /* ── HEADER ───────────────────────────────────────────────────── */
+  .site-header {
+    border-bottom: 1px solid var(--border);
+    padding: 2.5rem 2rem 2rem;
+    background: rgba(255,255,255,0.012);
+  }
+  .report-header {
+    border-bottom: 1px solid var(--border);
+    padding: 1.8rem 2rem;
+    background: rgba(42,47,58,0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    position: sticky; top: 0; z-index: 100;
+  }
+  .report-header-inner {
+    max-width: 720px; margin: 0 auto;
+    display: flex; align-items: flex-end;
+    justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+  }
+  .header-actions { display: flex; gap: 0.6rem; align-items: center; }
+  /* ── BUTTONS ──────────────────────────────────────────────────── */
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.55rem 1.1rem;
+    border-radius: 7px; cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.65rem; letter-spacing: 0.14em;
+    text-transform: uppercase; transition: all 0.2s;
+    text-decoration: none;
+  }
+  .btn-ghost {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.38);
+  }
+  .btn-ghost:hover {
+    border-color: rgba(255,255,255,0.22);
+    color: rgba(255,255,255,0.6);
+  }
+  .btn-gold-brand {
+    background: rgba(190,152,112,0.1);
+    border: 1px solid rgba(190,152,112,0.28);
+    color: var(--gold);
+  }
+  .btn-gold-brand:hover {
+    background: rgba(190,152,112,0.18);
+    border-color: rgba(190,152,112,0.45);
+  }
+  .btn-primary {
+    background: rgba(190,152,112,0.14);
+    border: 1px solid rgba(190,152,112,0.32);
+    color: var(--gold);
+    padding: 0.85rem 1.8rem;
+    font-size: 0.72rem;
+  }
+  .btn-primary:hover {
+    background: rgba(190,152,112,0.22);
+    border-color: rgba(190,152,112,0.5);
+    transform: translateY(-1px);
+  }
+  /* ── ABOUT PAGE ───────────────────────────────────────────────── */
+  .about-content { padding: 3rem 0 4rem; }
+  .about-section { margin-bottom: 2.8rem; }
+  .about-section h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.22rem; font-weight: 500;
+    color: var(--text-hi); letter-spacing: 0.02em;
+    margin-bottom: 0.85rem;
+  }
+  .about-section p {
+    font-size: 0.92rem; color: var(--text-lo);
+    line-height: 1.88; margin-bottom: 1rem;
+  }
+  .pillar-item {
+    margin-bottom: 0.85rem; padding: 0.75rem 1rem 0.75rem 1.1rem;
+    border-left: 2px solid rgba(255,255,255,0.07);
+  }
+  .pillar-item .pillar-label {
+    font-size: 0.62rem; letter-spacing: 0.14em;
+    text-transform: uppercase; color: rgba(255,255,255,0.60);
+    margin-bottom: 0.28rem;
+  }
+  .pillar-item p { font-size: 0.88rem; color: rgba(255,255,255,0.5); margin: 0; }
+  .band-grid { display: flex; flex-direction: column; gap: 0.65rem; margin-top: 0.8rem; }
+  .band-item {
+    display: flex; gap: 1rem; align-items: flex-start;
+    padding: 0.85rem 1rem; border-radius: 8px;
+  }
+  .band-label {
+    font-size: 0.6rem; letter-spacing: 0.16em;
+    text-transform: uppercase; font-weight: 600;
+    min-width: 100px; padding-top: 0.12rem;
+  }
+  .band-item p { font-size: 0.86rem; color: rgba(255,255,255,0.55); margin: 0; line-height: 1.78; }
+  .about-footer {
+    font-size: 0.72rem; color: var(--text-dim);
+    font-style: italic; margin-bottom: 2.5rem;
+    padding-top: 1rem; border-top: 1px solid var(--border);
+  }
+  /* ── SCORE CARDS ──────────────────────────────────────────────── */
+  .score-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 0.85rem; margin-bottom: 2rem;
+  }
+  .score-card {
+    background: var(--surface);
+    border-radius: 10px; padding: 1.2rem 1rem;
+    border: 1px solid rgba(255,255,255,0.04);
+  }
+  .score-card .card-label {
+    font-size: 0.54rem; letter-spacing: 0.14em;
+    text-transform: uppercase; margin-bottom: 0.75rem;
+  }
+  .band-pill {
+    display: block; font-size: 0.78rem;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    padding: 0.4rem 0.75rem; border-radius: 20px;
+    margin-bottom: 0.7rem; font-weight: 500;
+    text-align: center;
+  }
+  .score-card .card-pct {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem; font-weight: 300;
+    color: rgba(255,255,255,0.42); line-height: 1; margin-bottom: 0.18rem;
+  }
+  .score-card .card-sub {
+    font-size: 0.57rem; color: rgba(255,255,255,0.28);
+    margin-bottom: 0;
+  }
+  /* ── BAND LEGEND ──────────────────────────────────────────────── */
+  .band-legend {
+    display: flex; gap: 1.2rem; flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 2rem; padding-bottom: 1.8rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .legend-item { display: flex; align-items: center; gap: 0.4rem; }
+  .legend-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+  .legend-label {
+    font-size: 0.6rem; letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .legend-range { font-size: 0.6rem; color: rgba(255,255,255,0.2); }
+  /* ── REPORT CONTENT ───────────────────────────────────────────── */
+  .report-body { padding: 2.5rem 0 4rem; }
+  .report-opener {
+    margin-bottom: 2.5rem; padding-bottom: 2.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .report-opener p {
+    font-size: 0.98rem; color: var(--text-mid);
+    line-height: 1.92; font-style: italic;
+  }
+  .report-section {
+    margin-bottom: 2.8rem; padding-bottom: 2.8rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .report-section:last-of-type { border-bottom: none; }
+  .section-header {
+    display: flex; align-items: flex-start;
+    gap: 0.85rem; margin-bottom: 1.3rem;
+  }
+  .section-bar {
+    width: 3px; min-height: 28px; border-radius: 2px;
+    flex-shrink: 0; margin-top: 3px;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem; font-weight: 500;
+    color: var(--text-hi); letter-spacing: 0.02em; line-height: 1.3;
+  }
+  .section-body { padding-left: 1rem; }
+  .score-line {
+    display: inline-block; font-size: 0.7rem;
+    letter-spacing: 0.08em; margin-bottom: 1.4rem;
+    padding: 0.45rem 0.85rem; border-radius: 6px;
+  }
+  .prose {
+    font-size: 0.93rem; color: var(--text-mid);
+    line-height: 1.85; margin-bottom: 0.7rem;
+  }
+  .action-block {
+    margin: 1.4rem 0; padding: 1rem 1.2rem;
+    border-radius: 0 8px 8px 0;
+  }
+  .action-label {
+    font-size: 0.57rem; letter-spacing: 0.2em;
+    text-transform: uppercase; margin-bottom: 0.48rem;
+  }
+  .action-text {
+    font-size: 0.92rem; color: rgba(255,255,255,0.82);
+    line-height: 1.75;
+  }
+  .disclaimer {
+    margin-top: 2.5rem; padding: 1.2rem 1.4rem;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.06);
+    font-size: 0.78rem; color: rgba(255,255,255,0.35);
+    line-height: 1.75; font-style: italic;
+    text-align: center;
+  }
+  .confidential-line {
+    margin-top: 1.5rem; padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    text-align: center; font-size: 0.57rem;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+  }
+  /* ── LOADING ──────────────────────────────────────────────────── */
+  .loading-state { text-align: center; padding: 5rem 0; }
+  .dots { display: flex; justify-content: center; gap: 8px; margin-bottom: 1.2rem; }
+  .dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--gold);
+    animation: dot 1.4s ease-in-out infinite;
+  }
+  .dot:nth-child(2) { animation-delay: 0.2s; }
+  .dot:nth-child(3) { animation-delay: 0.4s; }
+  .loading-text {
+    font-size: 0.65rem; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--text-dim);
+  }
+  /* ── PRINT ────────────────────────────────────────────────────── */
+  @media print {
+    .report-header, .btn, .band-legend, #page-about { display: none !important; }
+    #page-report { display: block !important; }
+    body { background: #2B2D3A !important; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    .score-card, .action-block, .band-item, .section-bar, .band-pill {
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+    .report-body { padding-top: 1rem; }
+    .fade-in { opacity: 1 !important; animation: none !important; }
+    * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  }
+  /* ── RESPONSIVE ───────────────────────────────────────────────── */
+  @media (max-width: 600px) {
+    .score-grid { grid-template-columns: 1fr; gap: 0.7rem; }
+    .container, .container-sm { padding: 0 1.2rem; }
+    .site-header, .report-header { padding-left: 1.2rem; padding-right: 1.2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     ABOUT PAGE
+════════════════════════════════════════════════════════════════ -->
+<div id="page-about" class="page active">
+  <div class="site-header">
+    <div class="container-sm">
+      <div style="margin-bottom:1.2rem"><span style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:#be9870">Reframe</span><span style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:300;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.55)"> &amp; </span><span style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:#be9870">Rise</span></div>
+      <h1 class="display" style="font-size:clamp(1.8rem,4vw,2.5rem);color:var(--text-hi);letter-spacing:0.02em;line-height:1.2">
+        Understanding Your<br>Veteran Career Clarity Assessment
+      </h1>
+    </div>
+  </div>
+  <div class="container-sm">
+    <div class="about-content">
+      <div class="about-section fade-in fade-in-1">
+        <h2>Who This Is For</h2>
+        <p>This assessment was built for veterans who are 2 to 10 years out of service. People who have navigated the transition, built something functional in civilian life, and are carrying a persistent sense that something still isn't right. The external picture looks fine. The internal experience is something else.</p>
+        <p>If that sounds familiar, this report was built for you. It is designed to name what you have been carrying and give that clarity somewhere specific to go.</p>
+      </div>
+      <div class="about-section fade-in fade-in-2">
+        <h2>What This Assessment Measures</h2>
+        <p>The Veteran Career Clarity Assessment evaluates three pillars of post-service alignment. These pillars form a connected system. Your sense of identity shapes how you approach work. Your relationship to your work affects how you show up in your relationships. How you navigate your relationships reflects and reinforces how you see yourself. When one is off, the others feel it.</p>
+        <div class="pillar-item" style="border-left-color:#be9870">
+          <div class="pillar-label" style="color:#be9870">Pillar 1 — Identity &amp; Purpose</div>
+          <p>Measures how clearly you have built a sense of self that exists independently of your military service and current job title. A strong score here means your identity is grounded in who you are, not what you did or what you do.</p>
+        </div>
+        <div class="pillar-item" style="border-left-color:#c4383f">
+          <div class="pillar-label" style="color:#c4383f">Pillar 2 — Career &amp; Belonging</div>
+          <p>Measures whether your work reflects genuine contribution, your real capabilities, and your values — not just what made practical sense after separation. A strong score here means your professional life is aligned with who you actually are.</p>
+        </div>
+        <div class="pillar-item" style="border-left-color:#7a9baa">
+          <div class="pillar-label" style="color:#7a9baa">Pillar 3 — Relationships &amp; Reintegration</div>
+          <p>Measures the quality of your civilian connections, your emotional presence, and your capacity to ask for support when you need it. A strong score here means you have built genuine community and are not carrying everything alone.</p>
+        </div>
+      </div>
+      <div class="about-section fade-in fade-in-3">
+        <h2>How the Scoring Works</h2>
+        <p>Each question was answered on a five-point scale from Never to Almost Always. Some questions were scored in reverse, meaning a lower response on a negatively framed question reflects higher alignment. All scoring was handled before your results were calculated, so the numbers in your report reflect your actual alignment level in each area. Your pillar scores are expressed as both a raw average and a percentage, and each falls into one of three bands:</p>
+        <div class="band-grid">
+          <div class="band-item" style="background:rgba(126,184,164,0.08);border:1px solid rgba(126,184,164,0.2)">
+            <div class="band-label" style="color:#7EB8A4">Aligned</div>
+            <p>Strong alignment in this pillar. The foundation is solid. The work here is to sustain what is working and identify where the next level of clarity lives.</p>
+          </div>
+          <div class="band-item" style="background:rgba(200,169,110,0.08);border:1px solid rgba(200,169,110,0.2)">
+            <div class="band-label" style="color:#C8A96E">Emerging</div>
+            <p>Partial alignment with meaningful gaps. The awareness is present, but something between awareness and full integration is not yet consistent. The most common band and the most workable starting point.</p>
+          </div>
+          <div class="band-item" style="background:rgba(196,99,90,0.08);border:1px solid rgba(196,99,90,0.2)">
+            <div class="band-label" style="color:#C4635A">Disconnected</div>
+            <p>Significant alignment gaps in this pillar. The friction here is real and is likely creating drag in the other areas as well. This band calls for direct attention.</p>
+          </div>
+        </div>
+      </div>
+      <div class="about-section fade-in fade-in-4">
+        <h2>How to Read Your Report</h2>
+        <p>Your report is organized into three pillar sections followed by a cross-pillar analysis and a priority focus recommendation. Read the pillar sections first to understand each system individually, then read the full picture to understand how they are interacting. The priority focus tells you where to put your energy first and gives you a specific action to take within the next seven days.</p>
+        <p>This report is a diagnostic tool. It surfaces patterns, names what is present, and identifies the most useful starting point for the work. It is the beginning of a more specific conversation.</p>
+      </div>
+      <div class="about-section fade-in fade-in-5">
+        <h2>What Comes Next</h2>
+        <p>Reframe &amp; Rise works specifically with veterans in the years-out, looks-fine phase of post-service life. The coaching work that follows this report is built around the RISE Method: Reflect, Integrate, Strengthen, Execute. It is direct, practical, and grounded in the specific experience of building a civilian life that is genuinely yours.</p>
+        <p>If anything in your report named something worth exploring further, the next step is a straightforward conversation. No commitment required. You can reach out at reframerise.com when it feels right.</p>
+      </div>
+      <p class="about-footer fade-in fade-in-5">
+        This document is confidential and intended solely for the individual named in the accompanying report.
+      </p>
+      <div class="fade-in fade-in-5">
+        <a class="btn btn-primary" id="view-results-btn" href="#results" onclick="showReport();return false;" style="-webkit-tap-highlight-color:transparent;cursor:pointer;touch-action:manipulation;display:inline-flex;">
+          View My Results <span style="font-size:1rem;margin-left:0.2rem">→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     REPORT PAGE
+════════════════════════════════════════════════════════════════ -->
+<div id="page-report" class="page">
+  <div class="report-header">
+    <div class="report-header-inner">
+      <div>
+        <div style="margin-bottom:0.4rem"><span style="font-family:'Cormorant Garamond',serif;font-size:0.85rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:#be9870">Reframe</span><span style="font-family:'Cormorant Garamond',serif;font-size:0.85rem;font-weight:300;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.4)"> &amp; </span><span style="font-family:'Cormorant Garamond',serif;font-size:0.85rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:#be9870">Rise</span></div>
+        <h1 class="display" style="font-size:clamp(1.3rem,2.5vw,1.9rem);color:var(--text-hi);letter-spacing:0.02em">
+          Veteran Career Clarity Assessment
+        </h1>
+        <div style="font-size:0.76rem;color:rgba(255,255,255,0.26);margin-top:0.28rem">
+          Remy · Mar 15, 2026
+        </div>
+      </div>
+      <div class="header-actions">
+        <button class="btn btn-ghost" onclick="showAbout()">← About</button>
+        <button class="btn btn-gold-brand" onclick="printReport()">Download PDF</button>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="report-body">
+      <!-- Band Legend -->
+      <div class="band-legend fade-in fade-in-1">
+        <div class="legend-item">
+          <div class="legend-dot" style="background:#C4635A"></div>
+          <span class="legend-label" style="color:#C4635A">Disconnected</span>
+          <span class="legend-range">0–29%</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot" style="background:#C8A96E"></div>
+          <span class="legend-label" style="color:#C8A96E">Emerging</span>
+          <span class="legend-range">30–62%</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot" style="background:#7EB8A4"></div>
+          <span class="legend-label" style="color:#7EB8A4">Aligned</span>
+          <span class="legend-range">63–100%</span>
+        </div>
+      </div>
+      <!-- Score Cards -->
+      <div class="score-grid fade-in fade-in-2">
+        <div class="score-card" style="border-top:2px solid var(--c1)">
+          <div class="card-label" style="color:var(--c1)">Identity &amp; Purpose</div>
+          <span class="band-pill" id="pill-identity" style="background:rgba(190,152,112,0.12);color:var(--c1);border:1px solid rgba(190,152,112,0.25)">Emerging</span>
+          <div class="card-pct">47%</div>
+          <div class="card-sub">23/40 · avg 2.88</div>
+        </div>
+        <div class="score-card" style="border-top:2px solid var(--c2)">
+          <div class="card-label" style="color:var(--c2)">Career &amp; Belonging</div>
+          <span class="band-pill" id="pill-career" style="background:rgba(163,32,39,0.12);color:var(--c2);border:1px solid rgba(163,32,39,0.25)">Emerging</span>
+          <div class="card-pct">53%</div>
+          <div class="card-sub">25/40 · avg 3.13</div>
+        </div>
+        <div class="score-card" style="border-top:2px solid var(--c3)">
+          <div class="card-label" style="color:var(--c3)">Relationships &amp; Reintegration</div>
+          <span class="band-pill" id="pill-reintegration" style="background:rgba(78,99,109,0.12);color:var(--c3);border:1px solid rgba(78,99,109,0.25)">Emerging</span>
+          <div class="card-pct">50%</div>
+          <div class="card-sub">24/40 · avg 3.00</div>
+        </div>
+      </div>
+      <!-- Report Content — injected via script tag to handle multiline text safely -->
+      <div id="report-content" class="fade-in fade-in-3"></div>
+      <script id="report-data" type="application/json">---
+
+Remy, all three pillars of this assessment land in the Emerging band. That pattern is specific. It means you are functioning, professionally intact, and outwardly stable — and underneath that, something significant is running on friction. Identity, career, and relationships are each partially built and partially hollow. No single area is in collapse. Each area is sitting at the same unresolved middle ground, which tells a more precise story than any one low score would. What this profile describes is not a man who has fallen apart. It is a man who has kept it together long enough that the cost has become invisible, even to him.
+
+---
+
+**PILLAR 1: IDENTITY & PURPOSE**
+Score: 23 / 40 | Average: 2.88 | 47% | Emerging
+
+Your sense of self is split. On one side, there is something real: a connection to something larger than yourself, a recognition that your skills and values from service still carry weight in civilian life. Those are not performances. They reflect genuine anchoring points. On the other side, your self-worth is not currently coming from the inside. It is tethered to what you have done, what role you occupy, and what you can point to externally. That split is not sustainable as a foundation. The clearest signal in your profile is the difficulty naming who you are when someone removes the military background and the job title. When those two labels are taken off the table, the answer gets thin. That is the friction point this pillar is built on.
+
+The downstream consequence of that split is predictable. When identity is externally anchored, every professional decision carries more weight than it should, because the work is doing double duty — performing a job and confirming a self. Every moment of civilian life that does not match the structure, clarity, and purpose of service becomes quiet evidence of loss. You are not comparing your current life to a bad baseline. You are comparing it to a very high one, and the comparison runs automatically, without your full awareness or permission.
+
+Building from here means developing a working answer to who you are that does not require a uniform or a title to hold. Not a brand statement. Not an elevator pitch. A personal clarity about what you actually value, how you want to move through the world, and what you are building toward that is yours regardless of what role you occupy. That work is internal and it is specific. It starts with identifying which values you hold because they are genuinely yours, not because the military gave them to you, and deciding which ones you are keeping.
+
+---
+
+**PILLAR 2: CAREER & BELONGING**
+Score: 25 / 40 | Average: 3.13 | 53% | Emerging
+
+Your career profile contains a genuine tension. Your current role reflects your capabilities and what you care about, and you feel recognized for your military experience and leadership. Those are real positives and they are not nothing. But the same profile shows that your work does not feel like meaningful contribution, your professional path does not align with what you actually value, and you have no clear picture of where you are headed in the next one to three years. You are in a role that fits well enough on paper while the deeper question of whether any of this actually matters remains unanswered. That combination — visible competence, internal drift — is one of the most common and least discussed patterns in veterans several years post-separation.
+
+The career disconnect compounds the identity friction directly. When work is the primary external anchor for self-worth and the work does not feel meaningful, the account runs at a deficit every day. You show up, perform well, are recognized, and still leave with less than you arrived with. That is not a skill problem or a performance problem. It is an alignment problem that no amount of competence will resolve on its own.
+
+The work in this pillar is clarifying what contribution actually means to you, specifically. Not in the abstract. Concretely, what does work look like when it matters? What did mission feel like when it was real, and what elements of that are reproducible in civilian professional life? The one to three year horizon being blank is not laziness. It reflects the absence of a values-grounded framework for what comes next. Building that framework is the actual work, and it precedes any tactical career decision.
+
+---
+
+**PILLAR 3: RELATIONSHIPS & REINTEGRATION**
+Score: 24 / 40 | Average: 3.00 | 50% | Emerging
+
+The reintegration profile is the most uniform in this assessment. Every single response in this pillar landed at the same level: sometimes. Not rarely, not often, not a spread in either direction. Uniform middle responses across a full pillar like this are rarely random. They reflect a man who is present enough in his relationships to not consider them broken, and guarded enough to not let them run deep. The civilian relationships in your life are real but not sustaining. You can ask for help, but you do not do it comfortably. You are emotionally present in your closest relationships, but not consistently. You have found some community, but not the kind that replaces what you left behind.
+
+What military service provided in terms of relational depth was not primarily about the people. It was about the shared conditions, the shared stakes, and the shared identity that made trust automatic and connection fast. That does not exist in civilian life for most veterans, and the absence of it is not a personal failure. The problem comes when the response to that gap is a managed withdrawal. Staying surface-level in relationships. Pushing through alone when things get difficult. Going through the motions rather than showing up fully. Your profile suggests all of these are present, not acutely, but steadily.
+
+The relational work here is not about finding a replacement for military brotherhood. That specific thing does not replicate. The work is building a different kind of connection that operates on civilian terms and actually meets the need underneath the one you lost. That requires showing up more fully in relationships you already have, tolerating the slower pace at which civilian trust is built, and being honest with at least one person in your life about what the last several years have actually cost you.
+
+---
+
+**THE FULL PICTURE**
+
+What this assessment shows when all three pillars are read together is a specific pattern: you are living at functional distance from your own life. You are not disengaged. You are present enough, performing well enough, connected enough. But across identity, career, and relationships, the same dynamic is running. You are operating in each domain at a level that keeps things working without fully committing to what would make them mean something. That is not avoidance in the clinical sense. It is a very rational adaptation to an environment that has not yet given you a reason to go all in.
+
+The compounding effect matters here. Identity without internal grounding produces a constant low-level drain. Career without values alignment keeps the external markers in place while the internal account empties. Relationships held at arm's length provide no replenishment for either. The three pillars are not failing independently. They are reinforcing each other's friction, slowly, in a way that is easy to manage day to day and hard to name from the inside.
+
+The single most structurally important thing this profile reveals is this: you are skilled at functioning inside ambiguity without resolving it. You kept the machinery running post-separation. You built a credible civilian life. And somewhere in that process, the question of what it is all for got deferred. Not abandoned, deferred. It is still there. The fact that this assessment exists in your hands suggests some part of you already knew that.
+
+---
+
+**WHERE TO FOCUS FIRST**
+
+Identity is the priority pillar, and not only because it scored lowest. The career and reintegration friction both trace back to the same root: the absence of a clear, internally grounded sense of who you are outside of what you have done and what you currently do. Without that clarity, career alignment is guesswork and relational depth is unsafe. The identity work does not produce a finished product quickly, but it creates the foundation that makes progress in the other two pillars possible and sustainable.
+
+The career numbers are slightly stronger and contain some genuine positives worth building on. But pursuing career direction without resolving the identity question underneath it leads to better-decorated ambiguity. Start at the root.
+
+**Your focus for the next 7 days:**
+Write down three decisions you have made in the last year — professional or personal — and for each one, identify whether you made it based on what you actually value or based on what made practical sense, what looked right externally, or what a version of your past self would have chosen. No need to share it with anyone. The point is to see how often your own values are actually driving the car.
+
+---
+
+**WHAT COMES NEXT**
+
+This report is a starting point, not a complete picture. It reflects patterns across your responses and names what those patterns indicate, but a written report cannot ask a follow-up question, cannot sit with you in the ambiguity, and cannot help you work through what comes after the naming. A coaching conversation does that. It moves from observation to action in a way a document cannot, and it does so on your timeline, not a prescribed one.
+
+If any of what this report named resonates and you want to take the next step, Reframe & Rise works directly with veterans navigating exactly this terrain. No pressure, no pitch. If the timing is right, the conversation starts at reframerise.com.
+
+---
+
+*Confidential — Reframe & Rise*</script>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── PAGE NAVIGATION ──────────────────────────────────────────────
+function showReport() {
+  var about = document.getElementById('page-about');
+  var report = document.getElementById('page-report');
+  about.classList.remove('active');
+  about.setAttribute('style', 'display:none!important');
+  report.classList.add('active');
+  report.setAttribute('style', 'display:block!important');
+  try { window.scrollTo(0, 0); } catch(e) {}
+  var rc = document.getElementById('report-content');
+  if (rc && !rc.dataset.rendered) { renderReport(); }
+}
+function showAbout() {
+  var about = document.getElementById('page-about');
+  var report = document.getElementById('page-report');
+  report.classList.remove('active');
+  report.setAttribute('style', 'display:none!important');
+  about.classList.add('active');
+  about.setAttribute('style', 'display:block!important');
+  try { window.scrollTo(0, 0); } catch(e) {}
+}
+function printReport() {
+  var report = document.getElementById('page-report');
+  report.setAttribute('style', 'display:block!important');
+  document.querySelectorAll('.fade-in').forEach(function(el) { el.style.opacity = '1'; });
+  setTimeout(function() { window.print(); }, 300);
+}
+// ── COLOUR MAP ───────────────────────────────────────────────────
+function sectionColor(title) {
+  const t = (title || '').toUpperCase();
+  if (t.includes('IDENTITY'))                                          return '#be9870';
+  if (t.includes('CAREER'))                                            return '#c4383f';
+  if (t.includes('RELATIONSHIP') || t.includes('REINTEGRATION'))      return '#7a9baa';
+  if (t.includes('FULL PICTURE'))                                      return '#bdb69b';
+  if (t.includes('FOCUS') || t.includes('WHERE'))                     return '#be9870';
+  if (t.includes('NEXT'))                                              return '#7a9baa';
+  return '#be9870';
+}
+// ── REPORT PARSER ────────────────────────────────────────────────
+function parseAndRenderReport(rawText) {
+  const container = document.getElementById('report-content');
+  container.innerHTML = '';
+  container.dataset.rendered = '1';
+
+  if (!rawText || !rawText.trim()) {
+    container.innerHTML = '<p style="color:rgba(255,255,255,0.3);font-style:italic;text-align:center;padding:3rem 0">Report content will appear here once generated.</p>';
+    return;
+  }
+
+  // Strip math work above %%SCORES_END%%
+  const scoresEndIdx = rawText.indexOf('%%SCORES_END%%');
+  if (scoresEndIdx !== -1) {
+    rawText = rawText.slice(scoresEndIdx + '%%SCORES_END%%'.length).trim();
+  }
+
+  // Strip structured data block (IDENTITY_SCORE: etc.)
+  rawText = rawText.replace(/^(IDENTITY_SCORE:[^\n]+\n?|CAREER_SCORE:[^\n]+\n?|REINTEGRATION_SCORE:[^\n]+\n?|CLIENT_NAME:[^\n]+\n?|CLIENT_EMAIL:[^\n]+\n?)+/m, '').trim();
+
+  const lines = rawText.split('\n');
+
+  // Extract opener (text before first section header)
+  const firstHeaderIdx = lines.findIndex(l => /^(PILLAR [123]:|THE FULL PICTURE|WHERE TO FOCUS|WHAT COMES NEXT|Confidential)/i.test(l.trim()));
+  const openerLines = firstHeaderIdx > 0 ? lines.slice(0, firstHeaderIdx) : [];
+  const openerText = openerLines.map(l => l.trim()).filter(Boolean).join(' ');
+
+  if (openerText) {
+    const openerEl = document.createElement('div');
+    openerEl.className = 'report-opener';
+    openerEl.innerHTML = '<p>' + openerText + '</p>';
+    container.appendChild(openerEl);
+  }
+
+  // Split into sections by header lines
+  const sectionPattern = /^(PILLAR [123]:[^]*?|THE FULL PICTURE|WHERE TO FOCUS FIRST|WHAT COMES NEXT|Confidential.+)$/i;
+  const sections = [];
+  let currentSection = null;
+
+  for (let i = firstHeaderIdx; i < lines.length; i++) {
+    const line = lines[i].trim();
+    if (!line || line === '---') continue;
+    if (sectionPattern.test(line)) {
+      if (currentSection) sections.push(currentSection);
+      currentSection = { title: line, lines: [] };
+    } else if (currentSection) {
+      currentSection.lines.push(line);
+    }
+  }
+  if (currentSection) sections.push(currentSection);
+
+  // Render each section
+  sections.forEach(function(sec, idx) {
+    const isConfidential = /^confidential/i.test(sec.title);
+    if (isConfidential) {
+      const disclaimer = document.createElement('div');
+      disclaimer.className = 'disclaimer';
+      disclaimer.textContent = 'This report is a diagnostic tool, not a clinical evaluation. Your results reflect patterns present at the time of this assessment and are intended as a starting point for coaching conversation, not a definitive evaluation of your character, capability, or potential.';
+      container.appendChild(disclaimer);
+      const el = document.createElement('div');
+      el.className = 'confidential-line';
+      el.textContent = sec.title;
+      container.appendChild(el);
+      return;
+    }
+
+    const color = sectionColor(sec.title);
+    const secEl = document.createElement('div');
+    secEl.className = 'report-section fade-in';
+    secEl.style.animationDelay = (idx * 0.07) + 's';
+    secEl.style.opacity = '0';
+
+    secEl.innerHTML =
+      '<div class="section-header">' +
+        '<div class="section-bar" style="background:' + color + '"></div>' +
+        '<div class="section-title">' + sec.title + '</div>' +
+      '</div>' +
+      '<div class="section-body" id="section-body-' + idx + '"></div>';
+
+    container.appendChild(secEl);
+    const body = secEl.querySelector('#section-body-' + idx);
+    renderSectionBody(sec.lines, body, color);
+  });
+}
+
+function renderSectionBody(lines, container, color) {
+  let i = 0;
+  while (i < lines.length) {
+    const line = lines[i];
+    if (!line) { i++; continue; }
+
+    // Score line
+    if (/^Score:/i.test(line)) {
+      const el = document.createElement('div');
+      el.className = 'score-line';
+      el.style.background = color + '14';
+      el.style.color = color;
+      el.style.border = '1px solid ' + color + '28';
+      el.textContent = line;
+      container.appendChild(el);
+      i++; continue;
+    }
+
+    // 7-day action block
+    if (/^Your focus for the next 7 days/i.test(line)) {
+      const actionText = lines[i + 1] || '';
+      const el = document.createElement('div');
+      el.className = 'action-block';
+      el.style.background = color + '14';
+      el.style.border = '1px solid ' + color + '30';
+      el.style.borderLeft = '3px solid ' + color;
+      el.innerHTML =
+        '<div class="action-label" style="color:' + color + '">Your focus for the next 7 days</div>' +
+        '<div class="action-text">' + actionText + '</div>';
+      container.appendChild(el);
+      i += 2; continue;
+    }
+
+    // Regular prose — strip markdown bold markers
+    const el = document.createElement('p');
+    el.className = 'prose';
+    el.textContent = line.replace(/\*\*/g, '');
+    container.appendChild(el);
+    i++;
+  }
+}
+
+// ── INIT ─────────────────────────────────────────────────────────
+function renderReport() {
+  const raw = document.getElementById('report-data').textContent || '';
+  parseAndRenderReport(raw);
+}
+
+window.addEventListener('DOMContentLoaded', function() {
+  // Color band pills using pillar color (not band value color)
+  // Pills already have pillar color set in inline styles — no override needed
+
+  var el = document.getElementById('report-content');
+  if (el) renderReport();
+
+  var btn = document.getElementById('view-results-btn');
+  if (btn) {
+    btn.addEventListener('click', function(e) { e.preventDefault(); showReport(); }, { passive: false });
+    btn.addEventListener('touchend', function(e) { e.preventDefault(); showReport(); }, { passive: false });
+  }
+});
+</script>
+
+</body>
+</html>
